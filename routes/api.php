@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    Api\AuthController
+    Api\AuthController,
+    Api\UserController,
 };
 
 /*
@@ -32,3 +33,5 @@ Route::group([
     Route::get('refresh', [AuthController::class, 'refresh']);
     Route::get('logout', [AuthController::class, 'logout']);
 });
+
+Route::post('users', [UserController::class, 'store']);
