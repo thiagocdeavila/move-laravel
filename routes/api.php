@@ -25,7 +25,7 @@ Route::group([
     'prefix' => 'auth',
     'middleware' => 'auth:api'
 ], function() {
-    Route::get(
+    Route::post(
         'login',
         [AuthController::class, 'login']
     )->withoutMiddleware('auth:api');
