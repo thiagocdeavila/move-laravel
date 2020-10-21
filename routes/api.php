@@ -29,4 +29,6 @@ Route::group([
         'login',
         [AuthController::class, 'login']
     )->withoutMiddleware('auth:api');
+    Route::get('refresh', [AuthController::class, 'refresh']);
+    Route::get('logout', [AuthController::class, 'logout']);
 });
