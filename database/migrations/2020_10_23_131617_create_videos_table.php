@@ -15,7 +15,7 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->text('description');
             $table->string('tags');
@@ -34,6 +34,9 @@ class CreateVideosTable extends Migration
      */
     public function down()
     {
+        Schema::table('videos', function(Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('videos');
     }
 }
